@@ -1,0 +1,187 @@
+﻿@{
+    ViewData["Title"] = "Books, Authors and Publishers";
+    @model ViewModel;
+}
+<div class="row">
+    <h2>Add All</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Add an Author</h4>
+            <form action="/AddAuthor" method="post">
+                <div class="form-group">
+                    <label asp-for="Author.First_Name">First Name:</label>
+                    <input type="text" asp-for="Author.First_Name" class="form-control">
+                    <span class="alert-danger" asp-validation-for="Author.First_Name"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Author.Last_Name">Last Name:</label>
+                    <input type="text" asp-for="Author.Last_Name" class="form-control">
+                    <span class="alert-danger" asp-validation-for="Author.Last_Name"></span>
+                </div>
+                <button type="submit" class="btn btn-info">Add Author</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <h4>Add a Book</h4>
+            <form action="/AddBook" method="post">
+                <div class="form-group">
+                    <label asp-for="Book.Title">Title:</label>
+                    <input type="text" asp-for="Book.Title" class="form-control">
+                    <span class="alert-danger" asp-validation-for="Book.Title"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Book.AuthorId">Author:</label>
+                    <select asp-for="Book.AuthorId" class="form-control">
+                        @foreach(var author in @Model.AllAuthors)
+                        {
+                            <option value=@author.AuthorId>@author.First_Name @author.Last_Name</option>
+                        }
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-danger">Add Book</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <h4>Add Publisher</h4>
+            <form action="/AddPublisher" method="post">
+                <div class="form-group">
+                    <label asp-for="Publisher.Name">Title:</label>
+                    <input type="text" asp-for="Publisher.Name" class="form-control">
+                    <span class="alert-danger" asp-validation-for="Publisher.Name"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Publisher</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Add Publisher To Book</h4>
+            <form action="/AddPublisherToBook" method="post">
+                <div class="form-group">
+                    <label asp-for="Publication.PublisherId">Publisher:</label>
+                    <select asp-for="Publication.PublisherId" class="form-control">
+                        @foreach(var publisher in @Model.AllPublishers)
+                        {
+                            <option value=@publisher.PublisherId>@publisher.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Publication.BookId">Book:</label>
+                    <select asp-for="Publication.BookId" class="form-control">
+                        @foreach(var book in @Model.AllBooks)
+                        {
+                            <option value=@book.BookId>@book.Title</option>
+                        }
+                    </select>
+                </div>
+                <span asp-validation-for="Publication.BookId" class="alert-danger"></span>
+                <button type="submit" class="btn btn-success">Add Publisher To Book</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <h4>Add User</h4>
+            <form action="/AddUser/1" method="post">
+                <div class="form-group">
+                    <label asp-for="User.Name">Name:</label>
+                    <input type="text" asp-for="User.Name" class="form-control">
+                    <span class="alert-danger" asp-validation-for="User.Name"></span>
+                </div>
+                <button type="submit" class="btn btn-warning">Add User</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <h4>I need a friend</h4>
+            <form action="/CreateFriend" method="post">
+                <div class="form-group">
+                    <label asp-for="FriendShip.FrienderId">Friender:</label>
+                    <select asp-for="FriendShip.FrienderId" class="form-control">
+                        @foreach(var user in @Model.AllUsers)
+                        {
+                            <option value=@user.UserId>@user.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FriendShip.FriendeeId">Friendee:</label>
+                    <select asp-for="FriendShip.FriendeeId" class="form-control">
+                        @foreach(var user in @Model.AllUsers)
+                        {
+                            <option value=@user.UserId>@user.Name</option>
+                        }
+                    </select>
+                <span asp-validation-for="FriendShip.FrienderId" class="alert-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-info">Make a Friend</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h2>Display All</h2>
+    <div class="col-md-4">
+        <h4>Authors with Books</h4>
+        <ul>
+            @foreach(var author in @Model.AllAuthors)
+            {
+                <li>@author.First_Name @author.Last_Name
+                    <ul>
+                        @foreach(var book in @author.Books)
+                        {
+                            <li>@book.Title published by:
+                                <ul>
+                                    @foreach(var publication in @book.Publications)
+                                    {
+                                        <li>@publication.Publisher.Name</li>
+                                    }
+                                </ul>
+                            </li>
+                            <li>
+                                <form action="/book/delete/@book.BookId" method="post">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+        <h4>Publishers</h4>
+        <ul>
+            @foreach(var publisher in @Model.AllPublishers)
+            {
+                <li>@publisher.Name has Published:
+                    <ul>
+                        @foreach(var publication in @publisher.Publications)
+                        {
+                            <li>@publication.Book.Title</li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h4>Users</h4>
+        <ul>
+            @foreach(var user in @Model.AllUsers)
+            {
+                <li>@user.Name has friends:
+                    <ul>
+                        @foreach(var friender in @user.FrienderList)
+                        {
+                            <li>@friender.Friender.Name</li>
+                        }
+                        @foreach(var friendee in @user.FriendeeList)
+                        {
+                            <li>@friendee.Friendee.Name</li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h4>User Friendships</h4>
+    </div>
+</div>

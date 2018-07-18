@@ -1,0 +1,11 @@
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_may_2018/cSharp/BooksAndAuthors/bin/Debug/netcoreapp2.0/BooksAndAuthors.deps.json
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_may_2018/cSharp/BooksAndAuthors/bin/Debug/netcoreapp2.0/BooksAndAuthors.runtimeconfig.json
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_may_2018/cSharp/BooksAndAuthors/bin/Debug/netcoreapp2.0/BooksAndAuthors.runtimeconfig.dev.json
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_may_2018/cSharp/BooksAndAuthors/bin/Debug/netcoreapp2.0/BooksAndAuthors.dll
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_may_2018/cSharp/BooksAndAuthors/bin/Debug/netcoreapp2.0/BooksAndAuthors.pdb
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_may_2018/cSharp/BooksAndAuthors/obj/Debug/netcoreapp2.0/BooksAndAuthors.csprojResolveAssemblyReference.cache
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_may_2018/cSharp/BooksAndAuthors/obj/Debug/netcoreapp2.0/BooksAndAuthors.csproj.CoreCompileInputs.cache
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_may_2018/cSharp/BooksAndAuthors/obj/Debug/netcoreapp2.0/BooksAndAuthors.AssemblyInfoInputs.cache
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_may_2018/cSharp/BooksAndAuthors/obj/Debug/netcoreapp2.0/BooksAndAuthors.AssemblyInfo.cs
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_may_2018/cSharp/BooksAndAuthors/obj/Debug/netcoreapp2.0/BooksAndAuthors.dll
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_may_2018/cSharp/BooksAndAuthors/obj/Debug/netcoreapp2.0/BooksAndAuthors.pdb
