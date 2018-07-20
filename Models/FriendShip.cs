@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BooksAndAuthors.Models
 {
+    [Table("friendships")]
     public class FriendShip
     {
         [Key]
